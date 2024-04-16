@@ -6,6 +6,18 @@
   <title>Sinatra Exchange Rates</title>
 </head>
 <body>
-  
+
+  <h1>Convert <%= @selected_currency1 %> </h1>
+
+  <p>Go <a href="/">back</a></p>
+
+  <ul>
+    <% @currency_codes.each do |cc| %>
+    <li>
+      <a href="/<%= @selected_currency1 %>/<%= cc %>">Convert 1 <%= @selected_currency1 %> to <%= cc %>... </a>
+    </li>
+    <% end %>
+  </ul>
+
 </body>
 </html>
