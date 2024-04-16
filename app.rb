@@ -40,10 +40,13 @@ get("/:currency1/:currency2") do |currency1, currency2|
 
   # Logic to retrieve the exchange rate between currency1 and currency2
   access_key = ENV['EXCHANGE_RATE_KEY']
-  api_url = "https://api.exchangerate.host/convert?access_key=#{access_key}&from=#{currency1}&to=#{currency2}"
+  api_url = "https://api.exchangerate.host/convert?access_key=#{access_key}&from=#{currency1}&to=#{currency2}&amount=1"
   
   response = HTTP.get(api_url)
   result = response.parse(:json)
+
+  # Extract the rate from the API response
+  @rate = result.fetch("result")
 
   erb :show_rate
 end
