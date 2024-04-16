@@ -1,5 +1,6 @@
 require "sinatra"
 require "sinatra/reloader"
+require "http"
 
 get("/") do
   erk = ENV.fetch("EXCHANGE_RATE_KEY")
@@ -15,7 +16,14 @@ get("/") do
   parsed_data = JSON.parse(raw_data_string)
 
   currencies_hash = parsed_data.fetch("currencies")
-  currency_codes = currencies_hash.keys
+  @currency_codes = currencies_hash.keys
 
   erb :index
+end
+
+get("/:currency1") do |currency1|
+  @selected_currency1 = currency1
+end
+
+get("/:currency1/:currency2") do |currency1, currency2|
 end

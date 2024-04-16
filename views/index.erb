@@ -9,7 +9,11 @@
   <body>
 
     <h1>Currency pairs</h1>
-    <p> <%= @erk %> </p>
 
+    <ul>
+      <% @currency_codes.each do |cc| %>
+      <li><a href=<%= cc %>>Convert 1 <%= cc %> to...</a></li>
+      <% end %>
+    </ul>
   </body>
 </html>
